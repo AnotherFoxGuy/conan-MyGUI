@@ -35,4 +35,4 @@ class MyGUIConan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["MyGUI"]
+        self.cpp_info.libs = tools.collect_libs(self)
