@@ -3,7 +3,7 @@ from conans.tools import os_info, SystemPackageTool
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3"
+    version = "3.2.3-OGRE-1.9.1"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
@@ -25,7 +25,7 @@ class MyGUIConan(ConanFile):
         cmake.definitions['MYGUI_BUILD_DEMOS'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_DOCS'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_TEST_APP'] = 'OFF'
-        cmake.definitions['MYGUI_BUILD_TOOLS'] = 'OFF'
+        cmake.definitions['MYGUI_BUILD_TOOLS'] = 'ON'
         cmake.definitions['MYGUI_BUILD_PLUGINS'] = 'OFF'
         cmake.configure()
         cmake.build()
