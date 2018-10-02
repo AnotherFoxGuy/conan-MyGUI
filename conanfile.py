@@ -35,6 +35,7 @@ class MyGUIConan(ConanFile):
         cmake.install()
 
     def package_info(self):
+        self.cpp_info.includedirs = ['include/MYGUI']
         self.cpp_info.libdirs = ['lib', 'lib/release', 'lib/debug']	 # Directories where libraries can be found
         self.cpp_info.libs = tools.collect_libs(self)
         if self.settings.build_type == "Release":
