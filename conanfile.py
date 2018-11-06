@@ -3,7 +3,7 @@ from conans.tools import os_info, SystemPackageTool
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3-OGRE-1.11.2"
+    version = "3.2.3-OGRE-1.11.3"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
@@ -12,7 +12,7 @@ class MyGUIConan(ConanFile):
 
     def requirements(self):
         self.requires.add('OGREdeps/2018-07@anotherfoxguy/stable')
-        self.requires.add('OGRE/1.11.2@anotherfoxguy/stable')
+        self.requires.add('OGRE/1.11.3@anotherfoxguy/stable')
 
     def source(self):
         self.run("git clone --depth 1 https://github.com/MyGUI/mygui.git . ")
