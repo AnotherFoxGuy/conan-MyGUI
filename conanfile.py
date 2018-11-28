@@ -27,6 +27,7 @@ class MyGUIConan(ConanFile):
         cmake.definitions['MYGUI_BUILD_DOCS'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_TEST_APP'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_PLUGINS'] = 'OFF'
+        cmake.definitions['MYGUI_BUILD_TOOLS'] = 'OFF'
         cmake.configure()
         cmake.build()
 
