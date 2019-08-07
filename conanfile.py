@@ -3,13 +3,13 @@ from conans.tools import os_info, SystemPackageTool
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3-OGRE-1.11.6"
+    version = "3.2.3-OGRE-1.11.6-with-patches"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake_paths"
-    requires = "OGREdeps/2019-04@anotherfoxguy/stable", "OGRE/1.11.6@anotherfoxguy/stable"
+    requires = "OGREdeps/2019-04@anotherfoxguy/stable", "OGRE/1.11.6-with-patches@anotherfoxguy/stable"
 
     def source(self):
         git = tools.Git()
