@@ -9,7 +9,11 @@ class MyGUIConan(ConanFile):
     description = "Fast, flexible and simple GUI."
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake_paths"
-    requires = "OGREdeps/2019-04@anotherfoxguy/stable", "OGRE/1.11.6-with-patches@anotherfoxguy/stable"
+
+    def requirements(self):
+        self.requires.add('OGRE/1.11.6-with-patches@anotherfoxguy/stable')
+        if os_info.is_windows:
+            self.requires.add('OGREdeps/[20.x]@anotherfoxguy/stable')
 
     def source(self):
         git = tools.Git()
