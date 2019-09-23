@@ -12,7 +12,7 @@ class MyGUIConan(ConanFile):
     generators = "cmake"
 
     def requirements(self):
-        self.requires.add('OGRE/[1.x]@anotherfoxguy/stable')
+        self.requires.add('OGRE/[1.x]@anotherfoxguy/testing')
         if os_info.is_windows:
             self.requires.add('zlib/[1.x]@conan/stable')
             self.requires.add('freetype/[2.x]@bincrafters/stable')
