@@ -29,10 +29,9 @@ class MyGUIConan(ConanFile):
 
         tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
 
-        if os_info.is_windows:
-            tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", '''  
-                                    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-                                    conan_basic_setup(TARGETS)''')
+        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", '''  
+                                include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+                                conan_basic_setup(TARGETS)''')
 
     def build(self):
         cmake = CMake(self)
