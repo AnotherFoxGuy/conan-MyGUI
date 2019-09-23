@@ -22,6 +22,11 @@ class MyGUIConan(ConanFile):
         git.clone("https://github.com/MyGUI/mygui.git")
         git.checkout("0726ed4ae70b3479677a794a6a3dd5d6cc48ed62")
 
+        if os_info.is_windows:
+            tools.replace_in_file("MyGUIEngine/CMakeLists.txt", "${FREETYPE_LIBRARIES}", "CONAN_PKG::freetype")
+            tools.replace_in_file("MyGUIEngine/CMakeLists.txt",
+                                  "${FREETYPE_INCLUDE_DIRS} ${FREETYPE_FT2BUILD_INCLUDE_DIR}", "")
+
         tools.replace_in_file("CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
 
         tools.replace_in_file("CMakeLists.txt", "# Find dependencies",
