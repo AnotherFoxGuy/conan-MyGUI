@@ -4,7 +4,7 @@ env:
      - CONAN_REFERENCE: "MyGUI/3.2.3"
      - CONAN_USERNAME: "anotherfoxguy"
      - CONAN_LOGIN_USERNAME: "anotherfoxguy"
-     - CONAN_CHANNEL: "MyGUI"
+     - CONAN_CHANNEL: "testing"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/anotherfoxguy/ror-dependencies"
 
 linux: &linux
@@ -15,9 +15,6 @@ linux: &linux
    python: "3.6"
    services:
      - docker
-osx: &osx
-   os: osx
-   language: generic
 matrix:
    include:
       - <<: *linux
