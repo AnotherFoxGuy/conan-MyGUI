@@ -4,7 +4,7 @@ from conans.tools import os_info
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3"
+    version = "3.2.3-1.12.3-dev"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
@@ -12,7 +12,7 @@ class MyGUIConan(ConanFile):
     generators = "cmake"
 
     def requirements(self):
-        self.requires.add('OGRE/[1.x]@anotherfoxguy/testing')
+        self.requires.add('OGRE/1.12.3-dev@anotherfoxguy/testing')
         if os_info.is_windows:
             self.requires.add('zlib/[1.x]@conan/stable')
             self.requires.add('freetype/[2.x]@bincrafters/stable')
@@ -34,7 +34,7 @@ class MyGUIConan(ConanFile):
 
         tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
 
-        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", '''  
+        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", '''
                                 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
                                 conan_basic_setup(TARGETS)''')
 
