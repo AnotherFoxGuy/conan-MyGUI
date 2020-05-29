@@ -22,7 +22,11 @@ class MyGUIConan(ConanFile):
         tools.replace_in_file("CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
         tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
         tools.replace_in_file("CMakeLists.txt", "# MYGUI BUILD SYSTEM", "include(conan_paths.cmake)")
-        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", "find_library(ZLIB_LIBRARY NAMES zlib zlib_d PATH_SUFFIXES lib)")
+        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", 
+        '''
+        find_library(ZLIB_LIBRARY NAMES zlib zlib_d PATH_SUFFIXES lib)
+        find_library(FREETYPE_LIBRARY NAMES freetype freetype_d PATH_SUFFIXES lib)
+        ''')
 
     def build(self):
         cmake = CMake(self)
