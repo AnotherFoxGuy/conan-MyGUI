@@ -18,8 +18,7 @@ class MyGUIConan(ConanFile):
     def source(self):
         git = tools.Git()
         git.clone("https://github.com/MyGUI/mygui.git")
-        #git.checkout("07da0620e0d835346452b02b7b1ba7c583429736")
-        tools.replace_in_file("MyGUIEngine/src/msdfgen/ext/import-font.cpp", '''#pragma comment(lib, "freetype.lib")''', "// No")
+        git.checkout("9c3a74ebc2c387a0742094fba2c87ed6de7d243a")
         tools.replace_in_file("CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
         tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
         tools.replace_in_file("CMakeLists.txt", "# MYGUI BUILD SYSTEM", "include(conan_paths.cmake)")
