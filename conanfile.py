@@ -4,7 +4,7 @@ from conans.tools import os_info
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3"
+    version = "3.4.0"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
@@ -19,8 +19,7 @@ class MyGUIConan(ConanFile):
 
     def source(self):
         git = tools.Git()
-        git.clone("https://github.com/MyGUI/mygui.git")
-        git.checkout("0726ed4ae70b3479677a794a6a3dd5d6cc48ed62")
+        git.clone("https://github.com/MyGUI/mygui.git", "MyGUI3.4.0")
 
         if os_info.is_windows:
             tools.replace_in_file("MyGUIEngine/CMakeLists.txt", "${FREETYPE_LIBRARIES}", "CONAN_PKG::freetype")
