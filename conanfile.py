@@ -3,7 +3,7 @@ from conans.tools import os_info, SystemPackageTool
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.2.3-OGRE-1.11.6-with-patches"
+    version = "3.4.0-OGRE-1.11.6-with-patches"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
@@ -17,8 +17,7 @@ class MyGUIConan(ConanFile):
 
     def source(self):
         git = tools.Git()
-        git.clone("https://github.com/MyGUI/mygui.git")
-        git.checkout("9c3a74ebc2c387a0742094fba2c87ed6de7d243a")
+        git.clone("https://github.com/MyGUI/mygui.git", "MyGUI3.4.0")
         tools.replace_in_file("CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
         tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
         tools.replace_in_file("CMakeLists.txt", "# MYGUI BUILD SYSTEM", "include(conan_paths.cmake)")

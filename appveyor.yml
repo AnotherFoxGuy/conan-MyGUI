@@ -1,9 +1,9 @@
 build:                            false
 
 environment:
-    PYTHON:                       "C:\\Python37"
+    PYTHON:                       "C:\\Python38"
 
-    CONAN_REFERENCE:              "MyGUI/3.2.3-OGRE-1.11.6-with-patches"
+    CONAN_REFERENCE:              "MyGUI/3.4.0-OGRE-1.11.6-with-patches"
     CONAN_USERNAME:               "anotherfoxguy"
     CONAN_LOGIN_USERNAME:         "anotherfoxguy"
     CONAN_CHANNEL:                "testing"
