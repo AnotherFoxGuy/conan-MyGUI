@@ -9,6 +9,9 @@ class MyGUIConan(ConanFile):
     description = "Fast, flexible and simple GUI."
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake_paths"
+    exports_sources = [
+        "source*"
+    ]
 
     def requirements(self):
         self.requires.add('OGRE/1.11.6-with-patches@anotherfoxguy/stable')
@@ -16,12 +19,10 @@ class MyGUIConan(ConanFile):
             self.requires.add('OGREdeps/[20.x]@anotherfoxguy/stable')
 
     def source(self):
-        git = tools.Git()
-        git.clone("https://github.com/MyGUI/mygui.git", "MyGUI3.4.0")
-        tools.replace_in_file("CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
-        tools.replace_in_file("CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
-        tools.replace_in_file("CMakeLists.txt", "# MYGUI BUILD SYSTEM", "include(conan_paths.cmake)")
-        tools.replace_in_file("CMakeLists.txt", "# Set up the basic build environment", 
+        tools.replace_in_file("source/CMake/InstallResources.cmake", "if (MYGUI_RENDERSYSTEM EQUAL 3)", "if (FALSE)")
+        tools.replace_in_file("source/CMakeLists.txt", "set(CMAKE_MODULE_PATH", "set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR}")
+        tools.replace_in_file("source/CMakeLists.txt", "# MYGUI BUILD SYSTEM", "include(${CMAKE_BINARY_DIR}/conan_paths.cmake)")
+        tools.replace_in_file("source/CMakeLists.txt", "# Set up the basic build environment", 
         '''
         find_library(ZLIB_LIBRARY NAMES zlib zlib_d PATH_SUFFIXES lib)
         find_library(FREETYPE_LIBRARY NAMES freetype freetype_d PATH_SUFFIXES lib)
@@ -34,7 +35,7 @@ class MyGUIConan(ConanFile):
         cmake.definitions['MYGUI_BUILD_TEST_APP'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_PLUGINS'] = 'OFF'
         cmake.definitions['MYGUI_BUILD_TOOLS'] = 'OFF'
-        cmake.configure()
+        cmake.configure(source_folder="source")
         cmake.build()
 
     def package(self):
