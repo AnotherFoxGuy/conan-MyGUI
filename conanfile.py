@@ -3,18 +3,16 @@ from conans.tools import os_info, SystemPackageTool
 
 class MyGUIConan(ConanFile):
     name = "MyGUI"
-    version = "3.4.0-OGRE-1.11.6-with-patches"
+    version = "3.4.0"
     license = "MIT"
     url = "https://github.com/AnotherFoxGuy/conan-MyGUI"
     description = "Fast, flexible and simple GUI."
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake_paths"
-    exports_sources = [
-        "source*"
-    ]
+    exports_sources = "source/*"
 
     def requirements(self):
-        self.requires.add('OGRE/1.11.6-with-patches@anotherfoxguy/stable')
+        self.requires.add('OGRE/[1.x]@anotherfoxguy/stable')
         if os_info.is_windows:
             self.requires.add('OGREdeps/[20.x]@anotherfoxguy/stable')
 
